@@ -11,9 +11,13 @@ const CakeShopSlicer = createSlice({
         },
         addCake: state => {
             state.noOfCakes += 1
+        },
+        buyMore: (state, action) => {
+            console.log(action);
+            state.noOfCakes += action.payload
         }
     }
 })
 
-export const { buyCake, addCake } = CakeShopSlicer.actions;
+export const { buyCake, addCake, buyMore } = CakeShopSlicer.actions;
 export default CakeShopSlicer.reducer;

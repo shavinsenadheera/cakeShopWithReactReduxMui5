@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Button } from '@mui/material';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { buyCake, addCake } from './features/redux/Slicers/cakeShopSlicer';
 
 function App() {
+
+  const state = useSelector((state) => state.noOfCakes);
+  const dispatch = useDispatch();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {state}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Button onClick={() => dispatch(addCake())}>+</Button>
+        <Button onClick={() => dispatch(buyCake())}>-</Button>
     </div>
   );
 }
